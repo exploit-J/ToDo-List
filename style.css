@@ -1,18 +1,36 @@
 body{
+  height: 100vh;
   margin: 0;
   background-image: url(assets/image/background.jpg);
   background-repeat: no-repeat;
   background-size: cover;
 }
 
-.container{
-  background-color: #fff;
-  min-height: 100vh;
-  box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+input,
+button{
+  border: 1px solid lightgray;
+  outline: none;
 }
 
+.container{
+  max-width: 800px;
+  min-height: 100vh;
+  background-color: #fff;
+  box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+  border-top: 10px solid skyblue;
+  border-bottom: 10px solid skyblue;
+}
+
+.container h1{
+  padding-top: 10px;
+}
 .task-area{
   border: 1px solid lightgray;
+}
+
+.task-input{
+  width: 80%;
+  margin-bottom: 16px;
 }
 
 .tab-type{
@@ -28,12 +46,13 @@ body{
 
 .underline{
   position: absolute;
-  left: 0;
   top: 52px;
-  width: 80px;
+  left: 0;
+  width: 50px;
   height: 4px;
   padding: 0;
-  background-color: pink;
+  background-color: lightblue;
+  transition: 500ms ;
 }
 
 .task{
