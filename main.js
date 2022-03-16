@@ -4,19 +4,23 @@ let taskList = []
 let tabs = document.querySelectorAll('.task-nav')
 let mode = 'tab-all'
 let filterList = []
+let underLine = document.querySelector('.underline')
 
 addButton.addEventListener('click', addTask)
-userInput.addEventListener('keypress', function(e){
-  if(e.key === 'Enter'){
-    addTask()
-  }
-})
-for(let i=0; i<tabs.length; i++){
-  tabs[i].addEventListener('click', function(e){filter(e)})
-}
+// userInput.addEventListener('keypress', function(e){
+//   if(e.key === 'Enter'){
+//     addTask()
+//   }
+// })
+// for(let i=0; i<tabs.length; i++){
+//   tabs[i].addEventListener('click', function(e){filter(e)})
+// }
 
 function addTask(){
-  let task = {
+  if(userInput == ''){
+    alert('할일을 적어주세요')
+  }
+    let task = {
     id : randomIDGenerator(),
     taskContent : userInput.value,
     isComplete : false
@@ -37,7 +41,7 @@ function render(){
   }
 
   for(let i = 0; i < list.length; i++){
-    if(list[i].isComplete){
+    if(list[i].isComplete == true){
       result += `<div class="task">
       <div class="task-done">${list[i].taskContent}</div>
       <div>
@@ -81,6 +85,9 @@ function deleteTask(dtoggleId){
 function filter(e){
   if(e){
     mode = e.target.id
+    underLine.style.width = e.target.offsetWidth + 'px'
+    underLine.style.left = e.target.offsetLeft + 'px'
+    underLine.style.top = e.target.offsetTop + (e.target.offsetHeight - 4) + 'px'
   }
   
   filterList = []
