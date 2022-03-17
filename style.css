@@ -1,15 +1,25 @@
+/* reset */
+*{
+  font-family: 'Dosis', sans-serif;
+}
+
+input{
+  border: 1px solid lightgray;
+  outline: none;
+}
+
+button{
+  border: none;
+  background: none;  
+}
+
+/* contents */
 body{
   height: 100vh;
   margin: 0;
   background-image: url(assets/image/background.jpg);
   background-repeat: no-repeat;
   background-size: cover;
-}
-
-input,
-button{
-  border: 1px solid lightgray;
-  outline: none;
 }
 
 .container{
@@ -23,28 +33,36 @@ button{
 
 .container h1{
   padding-top: 10px;
+  font-weight: 700;
 }
+
+/* input 라인 */
+.input-task{
+  width: 90%;
+  margin-bottom: 16px;
+}
+
+.input-add-button{
+  font-size: 18px;
+  color: rgb(66, 66, 66);
+}
+
+.input-add-button:hover{
+  opacity: 0.5;
+}
+
+/* tab menu */
 .task-area{
   border: 1px solid lightgray;
 }
 
-.task-input{
-  width: 80%;
-  margin-bottom: 16px;
-}
-
-.tab-type{
+.task-tab{
   position: relative;
   display: flex;
   border-bottom: 1px solid lightgray;
 }
 
-.tab-type .task-nav{
-  padding: 1em;
-  cursor: pointer;
-}
-
-.underline{
+.task-tab .underline{
   position: absolute;
   top: 52px;
   left: 0;
@@ -55,12 +73,49 @@ button{
   transition: 500ms ;
 }
 
-.task{
-  display: flex;
-  justify-content: space-between;
+.task-tab .task-type{
   padding: 1em;
+  cursor: pointer;
 }
 
+/* 할일 목록 */
+.task-item{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 4px 8px;
+}
+
+.task-item .task{
+  display: block;
+  margin-bottom: 0;
+  word-break: break-all;
+  font-weight: 500;
+}
+
+.task-item .task-buttons{
+  display: flex;
+}
+
+.task-item button{
+  /* width: 50px; */
+  /* height: 50px; */
+  font-size: 20px;
+  color: rgb(104, 104, 104);
+}
+
+.task-item button:hover{
+  opacity: 0.5;
+}
+
+.task-item button:first-child{
+  margin-right: 8px;
+}
+
+/* 할일 목록 완료 시 */
 .task-done{
+  margin-bottom: 0;
+  font-style: italic;
+  color: rgb(141, 141, 141);
   text-decoration: line-through;
 }
