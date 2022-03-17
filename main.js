@@ -1,7 +1,7 @@
-let userInput = document.querySelector('.task-input')
-let addButton = document.querySelector('.add-button')
+let userInput = document.querySelector('.input-task')
+let addButton = document.querySelector('.input-add-button')
 let taskList = []
-let tabs = document.querySelectorAll('.task-nav')
+let tabs = document.querySelectorAll('.task-type')
 let mode = 'tab-all'
 let filterList = []
 let underLine = document.querySelector('.underline')
@@ -21,7 +21,9 @@ function addTask(){
   // 입력창이 공란이면 경고알림
   if(userInput.value == ''){
     // 경고알림 종료 후 자동 input focus
-    swal('오늘 할 일을 적어주세요').then(function(){userInput.focus()})
+    swal.fire({
+      text : '오늘 할 일을 적어주세요',
+      confirmButtonColor: 'skyblue' }).then(function(){userInput.focus()})
     return
   }
 
@@ -48,20 +50,30 @@ function render(){
 
   for(let i = 0; i < list.length; i++){
     if(list[i].isComplete == true){
-      result += `<div class="task">
-      <div class="task-done">${list[i].taskContent}</div>
-      <div>
-        <button onclick="toggleComplete('${list[i].id}')">check</button>
-        <button onclick="deleteTask('${list[i].id}')">delete</button>
-      </div>
-    </div>`
+      result += `
+      <div class="task-item">
+        <p class="task-done">${list[i].taskContent}</p>
+        <div class="task-buttons">
+          <button onclick="toggleComplete('${list[i].id}')">
+          <i class="fa-solid fa-rotate-left"></i>
+          </button>
+          <button onclick="deleteTask('${list[i].id}')">
+          <i class="fa-solid fa-trash-can"></i>
+          </button>
+        </div>
+      </div>`
     } else{
-      result += `<div class="task">
-      <div>${list[i].taskContent}</div>
-      <div>
-      <button onclick="toggleComplete('${list[i].id}')">check</button>
-      <button onclick="deleteTask('${list[i].id}')">delete</button>
-      </div>
+      result += `
+      <div class="task-item">
+        <p class="task">${list[i].taskContent}</p>
+        <div class="task-buttons">
+          <button onclick="toggleComplete('${list[i].id}')">
+          <i class="fa-solid fa-check"></i>
+          </button>
+          <button onclick="deleteTask('${list[i].id}')">
+          <i class="fa-solid fa-trash-can"></i>
+          </button>
+        </div>
       </div>`
     }
   }
