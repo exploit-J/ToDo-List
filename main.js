@@ -1,3 +1,10 @@
+// ---추가 작업하자....--- //
+// 전체 목록 체크/체크해제	
+// 체크된 목록 count	
+// 체크된 목록 일괄 삭제	
+// 추가된 목록 더블클릭 시 수정	
+// 화면 내 공간 초과 시pagination
+
 let userInput = document.querySelector('.input-task')
 let addButton = document.querySelector('.input-add-button')
 let taskList = []
