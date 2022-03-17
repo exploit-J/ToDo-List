@@ -7,20 +7,25 @@ let filterList = []
 let underLine = document.querySelector('.underline')
 
 addButton.addEventListener('click', addTask)
-// userInput.addEventListener('keypress', function(e){
-//   if(e.key === 'Enter'){
-//     addTask()
-//   }
-// })
-// for(let i=0; i<tabs.length; i++){
-//   tabs[i].addEventListener('click', function(e){filter(e)})
-// }
-
-function addTask(){
-  if(userInput == ''){
-    alert('할일을 적어주세요')
+userInput.addEventListener('keypress', function(e){
+  if(e.key === 'Enter'){
+    addTask()
   }
-    let task = {
+})
+for(let i=0; i<tabs.length; i++){
+  tabs[i].addEventListener('click', function(e){filter(e)})
+}
+
+// 할일 리스트 추가
+function addTask(){
+  // 입력창이 공란이면 경고알림
+  if(userInput.value == ''){
+    // 경고알림 종료 후 자동 input focus
+    swal('오늘 할 일을 적어주세요').then(function(){userInput.focus()})
+    return
+  }
+
+  let task = {
     id : randomIDGenerator(),
     taskContent : userInput.value,
     isComplete : false
@@ -30,6 +35,7 @@ function addTask(){
   filter()
 }
 
+// 할일 리스트 생성 함수
 function render(){
   let result = ''
   let list = []
@@ -62,6 +68,7 @@ function render(){
   document.querySelector('.task-board').innerHTML = result
 }
 
+// 할일 리스트 체크, 체크해제
 function toggleComplete(toggleId){
   for(let i=0; i<taskList.length; i++){
     if(taskList[i].id == toggleId){
@@ -72,9 +79,10 @@ function toggleComplete(toggleId){
   filter()
 }
 
-function deleteTask(dtoggleId){
+// 할일 리스트 삭제
+function deleteTask(toggleId){
   for(let i=0; i<taskList.length; i++){
-    if(taskList[i].id == dtoggleId){
+    if(taskList[i].id == toggleId){
       taskList.splice(i, 1)
       break
     }
@@ -82,9 +90,11 @@ function deleteTask(dtoggleId){
   filter()
 }
 
+
 function filter(e){
   if(e){
     mode = e.target.id
+    // 탭 메뉴 클릭 시 underline effect
     underLine.style.width = e.target.offsetWidth + 'px'
     underLine.style.left = e.target.offsetLeft + 'px'
     underLine.style.top = e.target.offsetTop + (e.target.offsetHeight - 4) + 'px'
@@ -110,6 +120,7 @@ function filter(e){
   }
 }
 
+// 랜덤 ID 생성
 function randomIDGenerator() {
   return "_" + Math.random().toString(36).substring(2, 11);
 }
