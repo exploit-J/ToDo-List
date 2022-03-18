@@ -19,9 +19,10 @@ userInput.addEventListener('keypress', function(e){
     addTask()
   }
 })
-for(let i=0; i<tabs.length; i++){
-  tabs[i].addEventListener('click', function(e){filter(e)})
-}
+
+tabs.forEach((tab) => {
+  tab.addEventListener('click', function(e){filter(e)})
+})
 
 // 할일 리스트 추가
 function addTask(){
@@ -59,28 +60,24 @@ function render(){
     if(list[i].isComplete == true){
       result += `
       <div class="task-item">
-        <p class="task-done">${list[i].taskContent}</p>
-        <div class="task-buttons">
-          <button onclick="toggleComplete('${list[i].id}')">
-          <i class="fa-solid fa-rotate-left"></i>
-          </button>
+      <button onclick="toggleComplete('${list[i].id}')">
+      <i class="fa-solid fa-rotate-left"></i>
+      </button>
+      <p class="task-done">${list[i].taskContent}</p>
           <button onclick="deleteTask('${list[i].id}')">
           <i class="fa-solid fa-trash-can"></i>
           </button>
-        </div>
       </div>`
     } else{
       result += `
       <div class="task-item">
-        <p class="task">${list[i].taskContent}</p>
-        <div class="task-buttons">
-          <button onclick="toggleComplete('${list[i].id}')">
-          <i class="fa-solid fa-check"></i>
-          </button>
+      <button onclick="toggleComplete('${list[i].id}')">
+      <i class="fa-solid fa-check"></i>
+      </button>
+      <p class="task">${list[i].taskContent}</p>
           <button onclick="deleteTask('${list[i].id}')">
           <i class="fa-solid fa-trash-can"></i>
           </button>
-        </div>
       </div>`
     }
   }
@@ -108,7 +105,6 @@ function deleteTask(toggleId){
   }
   filter()
 }
-
 
 function filter(e){
   if(e){

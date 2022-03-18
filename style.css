@@ -65,12 +65,17 @@ body{
 .task-tab .underline{
   position: absolute;
   top: 52px;
-  left: 0;
+  left: 45px;
   width: 50px;
   height: 4px;
   padding: 0;
   background-color: lightblue;
   transition: 500ms ;
+}
+
+.task-tab .check-all{
+  padding: 1em;
+  cursor: pointer;
 }
 
 .task-tab .task-type{
@@ -88,7 +93,9 @@ body{
 
 .task-item .task{
   display: block;
+  width: 100%;
   margin-bottom: 0;
+  padding: 0 6px 0 9px;
   word-break: break-all;
   font-weight: 500;
 }
@@ -108,13 +115,14 @@ body{
   opacity: 0.5;
 }
 
-.task-item button:first-child{
-  /* margin-right: 8px; */
-}
-
 /* 할일 목록 완료 시 */
 .task-done{
+  display: block;
+  width: 100%;
   margin-bottom: 0;
+  padding: 0 6px 0 9px;
+  word-break: break-all;
+  font-weight: 500;
   font-style: italic;
   color: rgb(141, 141, 141);
   text-decoration: line-through;
