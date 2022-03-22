@@ -14,7 +14,7 @@ let filterList = []
 let underLine = document.querySelector('.underline')
 
 addButton.addEventListener('click', addTask)
-userInput.addEventListener('keypress', function(e){
+userInput.addEventListener('keypress', (e) => {
   if(e.key === 'Enter'){
     addTask()
   }
